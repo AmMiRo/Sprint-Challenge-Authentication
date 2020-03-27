@@ -10,27 +10,27 @@ module.exports = {
 };
 
 function find() {
-  return db("auth").select("id", "username");
+  return db("users").select("id", "username");
 }
 
 function findBy(filter) {
-  return db("auth").where(filter);
+  return db("users").where(filter);
 }
 
 function findById(id) {
-  return db("auth")
+  return db("users")
     .select("id", "username")
     .where({ id })
     .first();
 }
 
 async function add(user) {
-  const [id] = await db("auth").insert(user, "id");
+  const [id] = await db("users").insert(user, "id");
   return findById(id);
 }
 
 function edit(changes, id) {
-  return db("auth")
+  return db("users")
     .where({ id })
     .update(changes)
     .then(() => {
@@ -40,7 +40,7 @@ function edit(changes, id) {
 
 async function remove(id) {
   const user = await findById(id);
-  db("auth")
+  db("users")
     .where({ id })
     .del();
   return user;
