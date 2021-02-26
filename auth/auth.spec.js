@@ -3,7 +3,7 @@ const db = require("../database/dbConfig.js");
 const server = require("../api/server.js");
 
 const testUser = {
-  username: "test1",
+  username: "test2",
   password: "testpass"
 };
 
